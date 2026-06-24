@@ -10,3 +10,5 @@ Repository ini dibuat untuk memenuhi tugas mata kuliah Object-Oriented Programmi
 ## Struktur Folder
 Di dalam repository ini terdapat folder tugas yang disusun berdasarkan pekan pertemuan kuliah:
 * `Pertemuan_2` s.d `Pertemuan_8`: Berisi file source code Python (`.py`) sesuai materi modul mingguan.
+* Proposal Final Project
+
