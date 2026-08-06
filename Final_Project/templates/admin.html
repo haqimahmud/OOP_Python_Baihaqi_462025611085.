@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Dashboard Admin - Kelola Data Pendaftar</h2>
+
+<form method="GET" class="my-3">
+    <div class="input-group col-md-4">
+        <input type="text" name="search" class="form-control" placeholder="Cari berdasarkan nama, no reg, prodi..." value="{{ search_query }}">
+        <button class="btn btn-secondary" type="submit">Cari</button>
+    </div>
+</form>
+
+<table class="table table-bordered table-striped mt-3">
+    <thead class="table-dark">
+        <tr>
+            <th>No Pendaftaran</th>
+            <th>Nama</th>
+            <th>Prodi</th>
+            <th>Asal Sekolah</th>
+            <th>Status</th>
+            <th>Aksi Verifikasi</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in pendaftar_list %}
+        <tr>
+            <td>{{ item.no_pendaftaran }}</td>
+            <td>{{ item.nama }}</td>
+            <td>{{ item.prodi }}</td>
+            <td>{{ item.asal_sekolah }}</td>
+            <td><span class="badge bg-warning text-dark">{{ item.status }}</span></td>
+            <td>
+                <form action="/admin/verifikasi/{{ item.no_pendaftaran }}" method="POST" class="d-flex">
+                    <select name="status" class="form-select form-select-sm me-2">
+                        <option value="Diterima">Diterima</option>
+                        <option value="Ditolak">Ditolak</option>
+                        <option value="Memerlukan Perbaikan">Memerlukan Perbaikan</option>
+                    </select>
+                    <button class="btn btn-sm btn-success" type="submit">Ubah</button>
+                </form>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="6" class="text-center">Belum ada data pendaftar.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card border-0 shadow-sm col-md-8 mx-auto">
+    <!-- Header Card -->
+    <div class="card-header bg-custom-blue text-white py-3">
+        <h4 class="mb-0 fw-semibold">Cek Status Pendaftaran</h4>
+    </div>
+
+    <div class="card-body p-4">
+        <!-- Form Input Pencarian -->
+        <form method="POST" class="mb-4">
+            <div class="input-group">
+                <input type="text" name="no_pendaftaran" class="form-control form-control-lg" placeholder="Masukkan No. Pendaftaran (cth: REG-2026-629)" value="{{ no_pendaftaran if no_pendaftaran else '' }}" required>
+                <button class="btn btn-custom-blue btn-lg px-4" type="submit">Cari</button>
+            </div>
+        </form>
+
+        {% if hasil %}
+        <!-- Card Hasil Pencarian -->
+        <div class="card bg-light border-0 p-4 rounded-3">
+            <h5 class="fw-bold text-dark mb-4 border-bottom pb-2">Hasil Pencarian:</h5>
+            
+            <!-- Tabel Sejajar & Rapi -->
+            <table class="table table-borderless align-middle mb-0 bg-transparent">
+                <tbody>
+                    <tr>
+                        <td class="fw-bold text-muted px-0 py-2" style="width: 140px;">No Pendaftaran</td>
+                        <td class="px-0 py-2" style="width: 15px;">:</td>
+                        <td class="fw-semibold text-dark px-0 py-2">{{ hasil.no_pendaftaran }}</td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold text-muted px-0 py-2">Nama</td>
+                        <td class="px-0 py-2">:</td>
+                        <td class="fw-semibold text-dark px-0 py-2">{{ hasil.nama }}</td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold text-muted px-0 py-2">Prodi</td>
+                        <td class="px-0 py-2">:</td>
+                        <td class="fw-semibold text-dark px-0 py-2">{{ hasil.prodi }}</td>
+                    </tr>
+                    <tr>
+                        <th class="fw-bold text-muted px-0 py-2">Asal Sekolah</th>
+                        <td class="px-0 py-2">:</td>
+                        <td class="fw-semibold text-dark px-0 py-2">{{ hasil.asal_sekolah }}</td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold text-muted px-0 py-2">Status</td>
+                        <td class="px-0 py-2">:</td>
+                        <td class="px-0 py-2">
+                            {% if hasil.status == 'Diterima' %}
+                                <span class="badge fs-6 px-3 py-2 fw-semibold" style="background-color: #a3e635; color: #1a4301; border: 1px solid #84cc16;">Diterima</span>
+                            {% elif hasil.status == 'Ditolak' %}
+                                <span class="badge border border-danger-subtle text-danger-emphasis bg-danger-subtle fs-6 px-3 py-2 fw-semibold">Ditolak</span>
+                            {% elif 'Perbaikan' in hasil.status %}
+                                <span class="badge border border-warning-subtle text-warning-emphasis bg-warning-subtle fs-6 px-3 py-2 fw-semibold">{{ hasil.status }}</span>
+                            {% else %}
+                                <span class="badge border border-secondary-subtle text-secondary-emphasis bg-secondary-subtle fs-6 px-3 py-2 fw-semibold">{{ hasil.status }}</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        {% elif no_pendaftaran %}
+        <div class="alert alert-warning mt-3">
+            Data pendaftaran dengan nomor <strong>{{ no_pendaftaran }}</strong> tidak ditemukan.
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

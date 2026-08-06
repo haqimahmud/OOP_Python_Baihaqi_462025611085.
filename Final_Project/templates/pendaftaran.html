@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card shadow-sm col-md-8 mx-auto border-0">
+    <div class="card-header bg-custom-blue text-white py-3">
+        <h4 class="mb-0 fw-semibold">Form Pendaftaran Mahasiswa Baru</h4>
+    </div>
+    <div class="card-body p-4">
+        <form method="POST">
+            <div class="mb-3">
+                <label class="form-label">Nama Lengkap *</label>
+                <input type="text" name="nama" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Alamat *</label>
+                <textarea name="alamat" class="form-control" rows="2" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Nomor Telepon *</label>
+                <input type="text" name="telp" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Asal Sekolah *</label>
+                <input type="text" name="asal_sekolah" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Program Studi *</label>
+                <select name="prodi" class="form-select" required>
+                    <!-- Placeholder default saat pertama kali dibuka -->
+                    <option value="" disabled selected>-- Pilih Program Studi --</option>
+                    
+                    <!-- Daftar Opsi Prodi UNIDA Gontor -->
+                    <option value="Pendidikan Agama Islam">Pendidikan Agama Islam</option>
+                    <option value="Pendidikan Bahasa Arab">Pendidikan Bahasa Arab</option>
+                    <option value="Tadris Bahasa Inggris">Tadris Bahasa Inggris</option>
+                    <option value="Studi Agama Agama">Studi Agama Agama</option>
+                    <option value="Aqidah dan Filsafat Islam">Aqidah dan Filsafat Islam</option>
+                    <option value="Ilmu Qur'an Dan Tafsir">Ilmu Qur'an Dan Tafsir</option>
+                    <option value="Hukum Ekonomi Syari'ah">Hukum Ekonomi Syari'ah</option>
+                    <option value="Perbandingan Madzhab">Perbandingan Madzhab</option>
+                    <option value="Ekonomi Islam">Ekonomi Islam</option>
+                    <option value="Manajemen">Manajemen</option>
+                    <option value="Ilmu Komunikasi">Ilmu Komunikasi</option>
+                    <option value="Hubungan Internasional">Hubungan Internasional</option>
+                    <option value="Teknik Informatika">Teknik Informatika</option>
+                    <option value="Teknologi Industri Pertanian">Teknologi Industri Pertanian</option>
+                    <option value="Agroteknologi">Agroteknologi</option>
+                    <option value="Farmasi">Farmasi</option>
+                    <option value="Gizi">Gizi</option>
+                    <option value="Kesehatan Dan Keselamatan Kerja">Kesehatan Dan Keselamatan Kerja</option>
+                    <option value="Kedokteran">Kedokteran</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-custom-blue w-100 py-2 fs-5">Kirim Pendaftaran</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

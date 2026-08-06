@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card border-0 shadow-sm overflow-hidden mb-4 p-3">
+    <div class="row g-0 align-items-center">
+        <!-- Kolom Kiri: Gambar diberi padding/space agar tidak menempel di tepi -->
+        <div class="col-md-5 p-2">
+            <img src="{{ url_for('static', filename='UNIDA.jpg') }}" 
+                 class="img-fluid rounded shadow-sm w-100" 
+                 alt="Gedung UNIDA Gontor" 
+                 style="max-height: 280px; object-fit: cover;">
+        </div>
+
+        <!-- Kolom Kanan: Teks & Tombol Utama -->
+        <div class="col-md-7">
+            <div class="card-body p-4 text-center text-md-start">
+                <h1 class="display-6 fw-bold text-custom-blue mb-3">
+                    Sistem Pendaftaran<br>Mahasiswa Baru
+                </h1>
+                <p class="lead text-muted mb-4">Universitas Darussalam Gontor</p>
+                
+                <hr class="my-4">
+
+                <div class="d-flex flex-column flex-sm-row gap-3">
+                    <a class="btn btn-custom-blue btn-lg px-4 shadow-sm" href="/pendaftaran" role="button">
+                        Daftar Sekarang
+                    </a>
+                    <a class="btn btn-secondary btn-lg px-4 shadow-sm" href="/status" role="button">
+                        Cek Status Pendaftaran
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
